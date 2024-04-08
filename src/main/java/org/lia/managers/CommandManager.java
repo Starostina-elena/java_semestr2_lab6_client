@@ -1,10 +1,9 @@
 package org.lia.managers;
 
 import org.lia.commands.*;
+import org.lia.tools.Response;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -62,6 +61,18 @@ public class CommandManager {
                 ObjectOutputStream oos = new ObjectOutputStream(baos);
                 oos.writeObject(command);
                 ds.send(new DatagramPacket(baos.toByteArray(), baos.size(), host, port));
+                byte[] secondaryBuffer = new byte[1 << 16 - 1];
+                DatagramPacket packetFromServer = new DatagramPacket(secondaryBuffer, 1 << 16 - 1);
+                ds.receive(packetFromServer);
+                secondaryBuffer = packetFromServer.getData();
+                try {
+                    ByteArrayInputStream bos = new ByteArrayInputStream(secondaryBuffer);
+                    ObjectInputStream objectOutputStream = new ObjectInputStream(bos);
+                    Response response = (Response) objectOutputStream.readObject();
+                    response.getAnswer().forEach(System.out::println);
+                } catch (IOException | ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
         } catch (NullPointerException e) {
             System.out.println(e);
