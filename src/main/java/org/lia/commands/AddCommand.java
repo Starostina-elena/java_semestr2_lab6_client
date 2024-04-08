@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class AddCommand implements Command, Serializable {
+public class AddCommand implements Command {
+    private static final long serialVersionUID = 1785464768755190753L;
+
 
     private Product product;
 
@@ -114,7 +116,6 @@ public class AddCommand implements Command, Serializable {
 
             product = new Product(arguments[1], coords, price, arguments[3],
                     Integer.parseInt(arguments[4]), resUnitOfMeasure, org);
-            System.out.println(product);
         } catch (IllegalArgumentException e) {
             System.out.println(e + ". Please try again");
         } catch (ArrayIndexOutOfBoundsException e) {

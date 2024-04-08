@@ -66,6 +66,8 @@ public class CommandManager {
         } catch (NullPointerException e) {
             System.out.println(e);
             System.out.println("Incorrect command. Use help to see a list of available commands");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Incorrect number of arguments, please try again");
         } catch (IOException e) {
             System.out.println(e);
         }

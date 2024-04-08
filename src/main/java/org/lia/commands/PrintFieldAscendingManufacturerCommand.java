@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PrintFieldAscendingManufacturerCommand implements Command, Serializable {
+public class PrintFieldAscendingManufacturerCommand implements Command {
+    private static final long serialVersionUID = 1785464768755190753L;
+
 
     public String description() {
         return "shows all manufacturers in ascending orders";

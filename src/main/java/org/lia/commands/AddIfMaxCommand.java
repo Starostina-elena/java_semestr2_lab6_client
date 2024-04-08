@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class AddIfMaxCommand implements Command, Serializable {
+public class AddIfMaxCommand implements Command {
+    private static final long serialVersionUID = 1785464768755190753L;
+
 
     private Product product;
 

@@ -1,6 +1,8 @@
 package org.lia.commands;
 
-public interface Command {
+import java.io.Serializable;
+
+public interface Command extends Serializable {
     void execute(String[] arguments);
     String description();
 }
