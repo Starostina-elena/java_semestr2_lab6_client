@@ -14,7 +14,7 @@ public class AddIfMaxCommand implements Command {
     private static final long serialVersionUID = 1785464768755190753L;
 
 
-    private Product product;
+    public Product product;
 
     public String description() {
         return "adds new element if this element is bigger than max element in collection. Pattern: " +

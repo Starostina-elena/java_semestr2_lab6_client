@@ -32,6 +32,8 @@ public class Organization implements Comparable<Organization>, Serializable {
     public void setName(String name) throws IllegalArgumentException {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("name cannot be empty");
+        } else if (name.length() > 255) {
+            throw new IllegalArgumentException("name is too long");
         }
         this.name = name;
     }
@@ -42,6 +44,9 @@ public class Organization implements Comparable<Organization>, Serializable {
 
     /**Sets fullname to the organization. Field can be null*/
     public void setFullName(String fullName) {
+        if (fullName != null & fullName.length() > 500) {
+            throw new IllegalArgumentException("fullName is too long");
+        }
         this.fullName = fullName;
     }
 

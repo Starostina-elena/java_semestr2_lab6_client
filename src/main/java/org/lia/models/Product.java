@@ -44,6 +44,8 @@ public class Product implements Comparable<Product>, Serializable {
     public void setName(String name) throws IllegalArgumentException {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("name cannot be empty");
+        } else if (name.length() > 500) {
+            throw new IllegalArgumentException("name is too long");
         }
         this.name = name;
     }
@@ -91,6 +93,9 @@ public class Product implements Comparable<Product>, Serializable {
         if (partNumber == null || !partNumber.isEmpty()) {
             this.partNumber = partNumber;
         }
+        else if (partNumber.length() > 100) {
+            throw new IllegalArgumentException("partNumber is too long");
+        }
         else {
             throw new IllegalArgumentException("partNumber should not be empty");
         }
@@ -105,7 +110,6 @@ public class Product implements Comparable<Product>, Serializable {
     public void setManufactureCost(Integer manufactureCost) throws IllegalArgumentException {
         if (manufactureCost == null) {
             throw new IllegalArgumentException("manufactureCost cannot be null");
-
         }
         this.manufactureCost = manufactureCost;
     }

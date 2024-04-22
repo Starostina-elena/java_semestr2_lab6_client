@@ -1,6 +1,7 @@
 package org.lia.commands;
 
 import org.lia.managers.CommandManager;
+import org.lia.models.Product;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -34,9 +35,6 @@ public class ExecuteScriptFileNameCommand implements Command {
             BufferedReader reader = new BufferedReader(new FileReader(arguments[1]));
             String line = reader.readLine();
             while (line != null) {
-                if (line.startsWith("add")) {
-                    String arg1 = reader.readLine();
-                }
                 commandManager.executeCommand(line);
                 line = reader.readLine();
             }

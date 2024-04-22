@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class PrintFieldAscendingManufacturerCommand implements Command {
+    public Product product;
     private static final long serialVersionUID = 1785464768755190753L;
 
 

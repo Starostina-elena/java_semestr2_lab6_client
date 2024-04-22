@@ -1,10 +1,12 @@
 package org.lia.commands;
 
+import org.lia.models.Product;
+
 import java.io.Serializable;
 
 public class CountByPartNumberCommand implements Command {
     private static final long serialVersionUID = 1785464768755190753L;
-
+    public Product product;
 
     private String partNumber;
 
